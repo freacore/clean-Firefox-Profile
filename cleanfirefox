@@ -1,0 +1,34 @@
+#!/bin/bash
+ffdir=$HOME/.mozilla/firefox/
+profilename=$(cat $ffdir/profiles.ini | grep Path | cut -d '=' -f 2)
+profiledir=$ffdir/$profilename
+mv $profiledir $profiledir-backup
+mkdir $profiledir
+
+#Folders
+cp -r $profiledir-backup/browser-extension-data $profiledir
+cp -r $profiledir-backup/extensions $profiledir #Erweiterungen
+cp -r $profiledir-backup/gm_scripts $profiledir #Greasemonkey-Scrpits
+cp -r $profiledir-backup/searchplugins $profiledir #hinzugefügte Suchmaschinen
+
+#Files
+cp $profiledir-backup/cert_override.txt $profiledir #Zertifikat-Ausnahmen
+#cp $profiledir-backup/cert8.db $profiledir #Sicherheitszertifikats-Einstellungen
+cp $profiledir-backup/cert9.db $profiledir #Sicherheitszertifikats-Einstellungen
+cp $profiledir-backup/content-prefs.sqlite $profiledir #Seitenspezifische Einstellungen
+cp $profiledir-backup/cookies.sqlite $profiledir #Cookies
+cp $profiledir-backup/extensions.json $profiledir
+cp $profiledir-backup/extension-settings.json $profiledir
+cp $profiledir-backup/favicons.sqlite $profiledir #Favicons
+#cp $profiledir-backup/key3.db $profiledir
+cp $profiledir-backup/key4.db $profiledir #Passwörter
+cp $profiledir-backup/logins.json $profiledir #Passwörter
+cp $profiledir-backup/mimeTypes.rdf $profiledir
+cp $profiledir-backup/permissions.sqlite $profiledir #Seitenspezifische Einstellungen
+cp $profiledir-backup/places.sqlite $profiledir #Lesezeichen, Downloads und Chronik
+cp $profiledir-backup/prefs.js $profiledir #Benutzereinstellungen
+cp $profiledir-backup/search.json.mozlz4 $profiledir #Suchmaschinen
+cp $profiledir-backup/sessionstore.jsonlz4 $profiledir #offene Tabs
+cp $profiledir-backup/signons.sqlite $profiledir
+cp $profiledir-backup/user.js $profiledir #Benutzereinstellungen
+cp $profiledir-backup/xulstore.json $profiledir #Symbolleiste
