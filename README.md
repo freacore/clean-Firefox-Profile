@@ -1,2 +1,2 @@
 # clean-Firefox-Profile
-cleans the firefox profile and preserve important data
+cleans the Firefox profile and preserves important data
